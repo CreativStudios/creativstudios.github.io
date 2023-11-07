@@ -10,7 +10,9 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^1.9.2"
+    "astro": "^1.9.2",
+    "astro-imagetools": "^0.9.0",
+    "photoswipe": "^5.4.2"
   },
   "devDependencies": {
     "@astrojs/tailwind": "^1.0.0"
