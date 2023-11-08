@@ -1,41 +1,117 @@
 ---
 import Container from "./Container.astro"
+import { Img } from "astro-imagetools/components";
+
+const images = [
+  {
+    src: './images/screenshots/deepwork/1.png',
+    label: 'Image 1',
+    width: 1242,
+    height: 2208,
+  },
+  {
+    src: './images/screenshots/deepwork/2.png',
+    label: 'Image 2',
+    width: 1242,
+    height: 2208,
+  },
+  {
+    src: './images/screenshots/deepwork/3.png',
+    label: 'Image 3',
+    width: 1242,
+    height: 2208,
+  },
+  {
+    src: './images/screenshots/deepwork/4.png',
+    label: 'Image 4',
+    width: 1242,
+    height: 2208,
+  },
+  // Add more images as needed
+];
 
 ---
-
 <div id="blog">
-  <Container>      
-      <div class="pt-24">
-        <div class="group p-6 sm:p-8 rounded-3xl bg-white border border-gray-100 dark:shadow-none dark:border-gray-700 dark:bg-gray-800 bg-opacity-50 shadow-2xl shadow-gray-600/10">
-          <div class="relative overflow-hidden rounded-xl">
-            <img src="./images/projects/deepwork.png"
-            alt="art cover" loading="lazy" width="1000" height="667" class="w-full object-cover object-top transition duration-500 group-hover:scale-105"/>
-          </div>
-          <div class="mt-6 relative">
-            <h3 class="text-3xl font-semibold text-gray-800 dark:text-white">
-              Deep Work - Productivity
-            </h3>
-            <p class="mt-6 mb-8 text-gray-600 dark:text-gray-300">
-              Worked with early stage startup in building their initial MVP and iterating app features based on customer feedback. 
-              Worked with early stage startup in building their initial MVP and iterating app features based on customer feedback.
-              Worked with early stage startup in building their initial MVP and iterating app features based on customer feedback.
-              Worked with early stage startup in building their initial MVP and iterating app features based on customer feedback.
-              Worked with early stage startup in building their initial MVP and iterating app features based on customer feedback.
-              Worked with early stage startup in building their initial MVP and iterating app features based on customer feedback.
-              Worked with early stage startup in building their initial MVP and iterating app features based on customer feedback.
-              Worked with early stage startup in building their initial MVP and iterating app features based on customer feedback.
-              Worked with early stage startup in building their initial MVP and iterating app features based on customer feedback.
-              Worked with early stage startup in building their initial MVP and iterating app features based on customer feedback.
-              Worked with early stage startup in building their initial MVP and iterating app features based on customer feedback.
-              Worked with early stage startup in building their initial MVP and iterating app features based on customer feedback.
+  <Container>     
+      <div class="mb-24 flex flex-col justify-between">
+        <main class="mt-16" >
+          <div class="my-8 sm:my-12">
+            <h2
+              class="text-gray-800 dark:text-white text-3xl md:text-4xl lg:text-6xl text-center mb-4 md:mb-6 font-semibold"
+            >
+              Deep Work
+            </h2>
+    
+            <p
+              class="max-w-screen-md dark:text-slate-400 text-gray-500 md:text-xl text-center mx-auto"
+            >
+              Productivity
             </p>
           </div>
-          
-        </div>
+    
+          <div class="max-w-screen-xl px-4 md:px-8 mx-auto">
+            <div
+              id="my-gallery"
+              class="pswp-gallery grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 xl:gap-8 gallery"
+            >
+          {
+            images.map((image) => (
+              <a
+                href={image.src}
+                data-cropped="true"
+                data-pswp-width={image.width}
+                data-pswp-height={image.height}
+                class="group h-72 md:h-96 flex justify-end items-end bg-gray-100 overflow-hidden rounded-xl shadow-lg relative gallery-item hover:shadow-xl"
+              >
+                <div class="w-full flex object-cover object-center absolute inset-0 group-hover:scale-110 transition duration-200 text-transparent">
+                  <Img
+                    src={image.src}
+                    alt={image.label}
+                    width={image.width / 2}
+                  />
+                </div>
 
-          
-        </div>
+                <div class="bg-gradient-to-t from-black via-transparent to-transparent opacity-20 absolute inset-0 pointer-events-none group-hover:opacity-0 transition duration-200" />
 
+                <span class="inline-block text-gray-200 text-xs md:text-sm border border-gray-500 rounded-lg backdrop-blur relative px-2 md:px-3 py-1 mr-3 mb-3 group-hover:opacity-0 transition duration-200">
+                  {image.label}
+                </span>
+              </a>
+            ))
+          }
+
+            </div>
+          </div>
+        </main>
+
+        <div class="grid mt-12 p-6 sm:p-8 rounded-3xl bg-white border border-gray-100 dark:shadow-none dark:border-gray-700 dark:bg-gray-800 bg-opacity-50 shadow-2xl shadow-gray-600/10">
+            <div class="">
+              <h2 class="dark:text-white text-3xl">About</h2>
+              <p class="mt-6 mb-6 text-gray-600 dark:text-gray-300">
+                Deep Work is a productivity app made to revolutionize the way we work. Entrepenuers can often find themselves drowning in work
+                and not seeing the results they want. Tracking your work and auditing what you work is a great tool 
+                to optimize your schedule and business. 
+              </p>
+
+              <h2 class="dark:text-white text-3xl">Process & Results</h2>
+              <p class="mt-6 mb-6 text-gray-600 dark:text-gray-300">
+                 We developed a plan to bring the idea to life. First going through designs and user journies (how user's would interact with app).
+                 Once we had a solid foundation it was off to the races. We managed to get the inital version of this app ready within two weeks. 
+                 We then spent time working on optimizing for the App Store and developing a plan for publishing the app.
+               </p>
+               <ul class="dark:text-white list-disc list-inside">
+                <li>A one of a kind productivity iOS app</li>
+                <li>Developed a companion Apple Watch app</li>
+                <li>Free for anyone to take advantage of our useful tool</li>
+              </ul>
+            </div>
+            
+            <div class="mt-12 lg:mt-8 flex justify-center">
+              <a href="https://apps.apple.com/us/app/habit-tracker-for-moms-siembra/id6467408339" target="_blank" class="relative flex h-9 items-center justify-center px-4 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max">
+                  <span class="relative text-sm font-semibold text-white"> View on App Store</span>
+              </a>
+          </div>
+          </div>
       </div>
   </Container>
 </div>
